@@ -10,8 +10,8 @@ import './styles.css';
         - <br> → <br/>
         - <input> → <input/>
     - Переименование некоторых атрибутов:
-        - class → className
-        - for → htmlFor
+        - classNameName → classNameNameName
+        - htmlFor → htmlhtmlFor
         - checked → defaultChecked
         - value → defaultValue
     - {} и "" для передачи значений
@@ -23,6 +23,7 @@ import './styles.css';
  */
 
 ReactDom.render(
+<<<<<<< HEAD
     <form className="form">
         <h1>Добавление отзыва</h1>
         <div>
@@ -63,4 +64,8 @@ ReactDom.render(
         </div>
     </form>,
     document.getElementById('app')
+=======
+  <div>kek</div>,
+  document.getElementById('app')
+>>>>>>> e52be24aa8cb8701fe3121d0049bfc284fb1c535
 );
