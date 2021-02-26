@@ -20,7 +20,9 @@ let mydom = (
         size="39"
         onChange={event => {
           const target = event.target;
-          debugger;
+          // debugger;
+          userName = target.value
+          // console.log(target.value)
         }}
         onBlur={() => alert(`userName: ${userName}`)}
       />

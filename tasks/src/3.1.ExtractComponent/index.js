@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 /**
@@ -20,7 +20,10 @@ import './styles.css';
 // Эта строка нужна, чтобы ESLint не сильно ругался, пока не написаны PropTypes.
 /*eslint react/prop-types: "warn" */
 
-function renderPost(post) {
+function Message(msg) {
+  return <div className="postMessage">{msg}</div>
+}
+function Post(post) {
   return (
     <div className="post">
       <div className="postHeader">
@@ -28,19 +31,26 @@ function renderPost(post) {
         <br />
         <span className="postTime">{post.time}</span>
       </div>
-      <div className="postMessage">{post.message}</div>
+      <div className="postMessage">{post.children}</div>
     </div>
   );
 }
-
+// Post.defaultProps = {
+//   author: `Кекес`,
+//   time: `1 вечность назад`,
+//   message: `Лолус`
+// }
+Post.propTypes = {
+  author: PropTypes.string,
+  time: PropTypes.string,
+  message: PropTypes.string
+}
 ReactDom.render(
   <div className="page">
     <div className="posts">
-      {renderPost({
-        author: 'Милая девушка',
-        time: '3 часа назад',
-        message: 'Можно использовать для выпекания чизкейков :)'
-      })}
+      <Post author="Милая девушка" time="3 часа назад">Кекес</Post>
+      {/* <Post author="Старый дед" time="2 часа назад" message="лол" /> */}
+      {/* <Post /> */}
     </div>
   </div>,
   document.getElementById('app')
@@ -50,7 +60,7 @@ ReactDom.render(
     Подсказки к 1:
     - {renderMyComponent({a: 1, b: 'some'})} → <MyComponent a={1} b="some">
     - Первый аргумент функции компонента обычно называется props
-   
+
     Подсказки к 2:
     - В начале файла нужно импортировать PropTypes
     - MyComponent.propTypes = {
@@ -58,16 +68,16 @@ ReactDom.render(
         b: PropTypes.string,
         onFire: PropTypes.func
       }
-   
+
     Подсказки к 3:
     - MyComponent.defaultProps = {
         b: 'default value'
       }
-   
+
     Подсказки к 4:
     - Дети — это вложенные узлы тэга.
       Пример с одним ребенком: <MyComponent>Значение</MyComponent>
     - Дети попадают в props в виде массива props.children.
-    - При использовании надо добавлять в propTypes компонента: 
+    - При использовании надо добавлять в propTypes компонента:
           children: PropTypes.node
  */

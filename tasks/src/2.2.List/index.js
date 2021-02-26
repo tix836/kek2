@@ -15,23 +15,26 @@ const posts = [
   {
     author: 'Парень не промах',
     time: '2 часа назад',
-    message: 'Попробую с удовольствием ;)'
+    message: 'Попробую с удовольствием ;)',
+    id: 1
   },
   {
     author: 'Милая девушка',
     time: '3 часа назад',
-    message: 'Можно использовать для выпекания чизкейков :)'
+    message: 'Можно использовать для выпекания чизкейков :)',
+    id: 2
   },
   {
     author: 'Скупец',
     time: 'вчера',
-    message: 'Цену-то загнули!'
+    message: 'Цену-то загнули!',
+    id: 3
   }
 ];
 
 function renderPost(post) {
   return (
-    <div className="post">
+    <div className="post" key={post.id}>
       <div className="postHeader">
         <span className="postAuthor">{post.author}</span>
         <br />
@@ -43,22 +46,22 @@ function renderPost(post) {
 }
 
 function renderAuthors(posts) {
+  let authors = [];
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i];
+    authors.push(<span key={post.id}>{post.author}</span>)
+  }
   return (
     <div className="authors">
-      <span>{posts[0].author}</span>
-      <span>{posts[1].author}</span>
-      <span>{posts[2].author}</span>
+      {authors}
     </div>
   );
 }
 
 ReactDom.render(
   <div className="page">
-    <div className="posts">
-      {renderPost(posts[0])}
-      {renderPost(posts[1])}
-      {renderPost(posts[2])}
-    </div>
+    {/* функция ниже не отрисовывается, но если я удалю фигурные скобки внутри map проблемы не будет */}
+    <div className="posts">{posts.map((post) => { return renderPost(post) })}</div>
     {renderAuthors(posts)}
   </div>,
   document.getElementById('app')

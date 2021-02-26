@@ -7,11 +7,15 @@ import './styles.css';
     При нажатии должно выводиться диалоговое окно с сообщением «Отправлено».
  */
 
+const func = () => {
+  alert('Отправлено')
+}
+
 ReactDom.render(
   <div className="root">
     <div className="form">
       <div style={{ marginBottom: '10px' }}>Нажми отправить</div>
-      <input type="button" className="button" value="Отправить" />
+      <input onClick={() => { alert('kek') }} type="button" className="button" value="Отправить" />
     </div>
   </div>,
   document.getElementById('app')

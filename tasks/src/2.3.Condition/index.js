@@ -16,17 +16,24 @@ import './styles.css';
  */
 
 function renderPosts(posts) {
-  //<div className="emptyPosts">Нет откликов</div>
-  //<div className="singlePost">Единственный отклик</div>
-  return <div className="posts">Отклики в количестве {posts.length}</div>;
+  if (posts.length === 0) {
+    return <div className="emptyPosts">Нет откликов</div>
+  }
+  else if (posts.length === 1) {
+    return <div className="singlePost">Единственный отклик</div>
+  }
+  else {
+    return <div className="posts">Отклики в количестве {posts.length}</div>;
+  }
 }
 
 function renderLot(name, description, tags) {
   return (
     <div className="lot">
-      <div className="lotName">{name}</div>
-      <div className="lotDescription">{description}</div>
-      {renderTags(tags)}
+      <div className="lotName">{!name && 'неизвестный предмет'}</div>
+      {/* {description && <div className="lotDescription">{description}</div>} */}
+      {description ? <div className="lotDescription">{description}</div> : ``}
+      {tags && tags.length > 0 && renderTags(tags)}
     </div>
   );
 }
@@ -38,18 +45,18 @@ function renderTags(tags) {
 
 ReactDom.render(
   <div>
-      <div className="page">
-          {renderLot('', 'красный, красивый, твой!', [])}
-          {renderPosts([])}
-      </div>
-      <div className="page">
-          {renderLot('Пирожок с капустой', undefined, ['#свежий', '#ручнаяРабота'])}
-          {renderPosts(['Тут ровно один отклик'])}
-      </div>
-      <div className="page">
-          {renderLot('', '', ['#большой', '#Яркий'])}
-          {renderPosts(['Класс!', 'Хочу еще!', 'Отстой'])}
-      </div>
+    <div className="page">
+      {renderLot('', 'красный, красивый, твой!', [])}
+      {renderPosts([])}
+    </div>
+    <div className="page">
+      {renderLot('Пирожок с капустой', undefined, ['#свежий', '#ручнаяРабота'])}
+      {renderPosts(['Тут ровно один отклик'])}
+    </div>
+    <div className="page">
+      {renderLot('', '', ['#большой', '#Яркий'])}
+      {renderPosts(['Класс!', 'Хочу еще!', 'Отстой'])}
+    </div>
   </div>,
   document.getElementById('app')
 );
