@@ -34,11 +34,7 @@ const posts = [
 
 function renderPost(post) {
   return (
-<<<<<<< HEAD
     <div className="post" key={post.id}>
-=======
-    <div key={[post.id]} className="post">
->>>>>>> e52be24aa8cb8701fe3121d0049bfc284fb1c535
       <div className="postHeader">
         <span className="postAuthor">{post.author}</span>
         <br />
@@ -64,16 +60,8 @@ function renderAuthors(posts) {
 
 ReactDom.render(
   <div className="page">
-<<<<<<< HEAD
     {/* функция ниже не отрисовывается, но если я удалю фигурные скобки внутри map проблемы не будет */}
     <div className="posts">{posts.map((post) => { return renderPost(post) })}</div>
-=======
-    <div className="posts">
-      {posts.map(post  => {
-        return renderPost(post)
-      })}
-    </div>
->>>>>>> e52be24aa8cb8701fe3121d0049bfc284fb1c535
     {renderAuthors(posts)}
   </div>,
   document.getElementById('app')

@@ -16,13 +16,6 @@ import './styles.css';
  */
 
 function renderPosts(posts) {
-<<<<<<< HEAD
-=======
-  //<div className="emptyPosts">Нет откликов</div>
-  //<div className="singlePost">Единственный отклик</div>
-
-  // return <div className="posts">Отклики в количестве {posts.length}</div>;
->>>>>>> e52be24aa8cb8701fe3121d0049bfc284fb1c535
   if (posts.length === 0) {
     return <div className="emptyPosts">Нет откликов</div>
   }
@@ -35,7 +28,6 @@ function renderPosts(posts) {
 }
 
 function renderLot(name, description, tags) {
-<<<<<<< HEAD
   return (
     <div className="lot">
       <div className="lotName">{!name && 'неизвестный предмет'}</div>
@@ -45,17 +37,6 @@ function renderLot(name, description, tags) {
     </div>
   );
 }
-=======
-      return (
-      <div className="lot">
-        {name && <div className="lotName">{name}</div>}
-        <div className="lotDescription">{description}</div>
-        {renderTags(tags)}
-      </div>
-    );
-  }
-
->>>>>>> e52be24aa8cb8701fe3121d0049bfc284fb1c535
 
 function renderTags(tags) {
   const content = tags.join(', ');
